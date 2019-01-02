@@ -1,32 +1,76 @@
-.App {
+.todo-form {
+  margin: 0 auto;
+}
+h2 {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+form {
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  border: 5px solid white;
+  padding: 20px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+label {
+  display: block;
+  margin-bottom: 1rem;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid black;
+}
+button,
+input[type='submit'] {
+  width: auto;
+  background: purple;
   color: white;
+  border: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 0.5rem 1.2rem;
+}
+fieldset {
+  border: 0;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+  box-shadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)';
+  list-style: none;
+  background: white;
+  padding: 2rem;
+  border: 1px solid #ededed;
+}
+
+.btn-danger {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.todoTask {
+  position: relative;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  border-top: 1px solid #ccc;
+}
+
+.task-label {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+  grid-gap: 1rem;
 }

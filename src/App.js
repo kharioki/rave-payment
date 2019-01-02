@@ -1,25 +1,56 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+// import the library
+import RavePaymentModal from 'react-ravepayment';
+
 class App extends Component {
+  state = {
+    key: 'FLWPUBK-3a65255d17db409a9da8aab6474930f8-X', // RavePay PUBLIC KEY
+    email: 'tony.kharioki@gmail.com', // customer email
+    amount: 10 // equals NGN 1000. Minimum amount allowed NGN 1 while on production or live system, it's 10
+  };
+
+  callback = response => {
+    console.log(response);
+  };
+
+  close = () => {
+    console.log('Payment closed');
+  };
+
+  getReference = () => {
+    let text = '';
+    let possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=';
+
+    for (let i = 0; i < 10; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <p className="App-intro">
+          <RavePaymentModal
+            text="Make Payment"
+            class="payButton"
+            metadata={[{ metaname: 'Device', metavalue: 'IPhone X' }]}
+            reference={this.getReference()}
+            email={this.state.email}
+            amount={this.state.amount}
+            ravePubKey={this.state.key}
+            payment_options="card, qr"
+            currency="USD"
+            country="NG"
+            callback={this.callback}
+            close={this.close}
+            isProduction={true}
+            tag="button" // it can be button or a or input tag
+          />
+        </p>
       </div>
     );
   }
